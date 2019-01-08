@@ -1,0 +1,8 @@
+# Emacs
+\#*
+*~
+# Compilation
+*.hex
+*.o
+*.out
+*.map
