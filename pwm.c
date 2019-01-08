@@ -11,7 +11,9 @@ int main() {
   // Fast PWM mode
   TCCR0A |= ((1<<WGM01)|(1<<WGM00));
   TCCR0B = (0<<WGM02);
-
+  // Clock has no prescaler
+  TCCR0B |= (1<<CS00);
+  
   while(1) {
     OCR0A = 255;
   }
