@@ -2,24 +2,18 @@
 #include <avr/io.h>
 #include <util/delay.h>
 int main() {
-  // Set pin 4 to output
-  DDRB = (1<<DDB4);
+  // Set pip 6 to output
+  DDRB = (1<<DDB1);
 
   // Set up PWM
-  OCR1A = 0;
-  GTCCR = (1<<PWM1A);
-  GTCCR |= ((1<<COM1A1)|(1<<COM1A0));
-
+  // Run it in normal mode, not inverted
+  TCCR0A = ((1<<COM0A1)|(0<<COM0A0));
+  // Fast PWM mode
+  TCCR0A |= ((1<<WGM01)|(1<<WGM00));
+  TCCR0B = (0<<WGM02);
 
   while(1) {
-    OCR1A = 255;
-    _delay_ms(250);
-    OCR1A = 128;
-    _delay_ms(250);
-    OCR1A = 64;
-    _delay_ms(250);
-    OCR1A = 0;
-    _delay_ms(250);
+    OCR0A = 256;
   }
 
   return 0;
