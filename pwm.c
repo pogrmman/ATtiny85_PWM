@@ -14,10 +14,10 @@ int main() {
   TCCR0B = (0<<WGM02);
   // Clock has 1/8 prescaler
   TCCR0B |= (1<<CS01);
-  
+
+  int i;
   while(1) {
     // Ramp up brightness
-    int i;
     for (i=0; i<256; ++i) {
       OCR0A = i;
       _delay_ms(20);
