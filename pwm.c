@@ -6,7 +6,7 @@ int main() {
   DDRB = (1<<PB0);
 
   // Set up PWM
-  OCR0A = 20; // Duty cycle
+  OCR0A = 0; // Duty cycle
   // Run it in normal mode, not inverted
   TCCR0A = ((1<<COM0A1)|(0<<COM0A0));
   // Fast PWM mode
@@ -16,7 +16,17 @@ int main() {
   TCCR0B |= (1<<CS01);
   
   while(1) {
-    ;
+    // Ramp up brightness
+    int i;
+    for (i=0; i<256; ++i) {
+      OCR0A = i;
+      _delay_ms(20);
+    }
+    // Ramp down brightness
+    for (i=255; i>0; --i) {
+      OCR0A = i;
+      _delay_ms(20);
+    }
   }
 
   return 0;
