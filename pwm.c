@@ -13,7 +13,7 @@ int main() {
   TCCR0B = (0<<WGM02);
 
   while(1) {
-    OCR0A = 256;
+    OCR0A = 255;
   }
 
   return 0;
