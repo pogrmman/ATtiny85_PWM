@@ -9,8 +9,8 @@ pwm.out: pwm.o
 
 ##### Compiling #####
 pwm.o: pwm.c
-	avr-gcc -mmcu=attiny85 -Wall -Os -c pwm.c
+	avr-gcc -mmcu=attiny85 -Wall -Os -c pwm.c -std=c99
 
 ##### Installing #####
 load: pwm.hex
-	avrdude -p ATtiny85 -c PiGPIO -e -U flash:w:pwm.hex -v
+	avrdude -p t85 -c usbtiny -e -U flash:w:pwm.hex -v
